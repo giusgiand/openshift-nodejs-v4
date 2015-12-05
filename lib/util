@@ -1,11 +1,7 @@
 #!/bin/bash
 
 function update_nodejs {
-  if [ -f "$OPENSHIFT_REPO_DIR/.openshift/NODE_VERSION_URL" ]; then
-    local VERSION_URL=$(cat $OPENSHIFT_REPO_DIR/.openshift/NODE_VERSION_URL)
-  else
-    local VERSION_URL="https://semver.io/node/stable"
-  fi
+  local VERSION_URL="https://semver.io/node/stable"
 
   local LATEST="v$(curl --silent --max-time 5 ${VERSION_URL})"
   local NODE_URL=https://nodejs.org/dist/${LATEST}/node-${LATEST}-linux-x64.tar.gz
